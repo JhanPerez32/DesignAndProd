@@ -14,10 +14,11 @@ public class PlayerMove : MonoBehaviour
     [Header("Check Ground")]
     public Transform groundCheck;
     public LayerMask groundMask;
-    Vector3 velocity;
+    public Vector3 velocity;
     bool isGrounded;
+    public bool isWallRunning;
 
-    private void Start()
+    protected virtual void Start()
     {
         if(PlayerManager.Instance != null)
         {
@@ -35,9 +36,8 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        CharMove();
+    protected virtual void Update()
+    {   CharMove();
         Jump();
     }
 
@@ -46,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+           velocity.y = -2f;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -54,8 +54,10 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(playerSpeed * Time.deltaTime * move);
-
-        velocity.y += gravity * Time.deltaTime;
+        if (!isWallRunning)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
         controller.Move(velocity * Time.deltaTime);
     }
 
