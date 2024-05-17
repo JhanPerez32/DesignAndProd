@@ -6,7 +6,7 @@ public class PlayerMovementWithWalRide : PlayerMove
 {
     private float horizontalInput;
     private float verticalInput;
-
+    public Animator CamAnim;
     private float wallRunSpeed;
     public LayerMask whatIsWall;
     private RaycastHit leftWallhit;
@@ -55,10 +55,19 @@ public class PlayerMovementWithWalRide : PlayerMove
         {
             WallRunningMovement();
             isWallRunning = true;
-            Debug.Log("Wallrunning!");
+            if (wallLeft && !wallRight)
+            {
+                CamAnim.SetBool("WallrideR", true);
+            }
+            else
+            {
+                CamAnim.SetBool("WallrideL", true);
+            }
         }
         else
         {
+            CamAnim.SetBool("WallrideL", false);
+            CamAnim.SetBool("WallrideR", false);
             isWallRunning = false;
         }
     }
