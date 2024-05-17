@@ -58,6 +58,10 @@ public class PlayerMove : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
+        else
+        {
+            velocity.y -= (gravity/2) * Time.deltaTime;
+        }
         controller.Move(velocity * Time.deltaTime);
     }
 
