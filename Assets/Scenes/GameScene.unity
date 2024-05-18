@@ -303,7 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103f3fa4521411a4ab78a5d13fd64362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 6762968313635119186, guid: 1a01b393a230e4b4bb9cf9097032a4b6, type: 3}
+  distanceToSpawn: 2
+  roomPrefabs:
+  - {fileID: 6762968313635119186, guid: 1a01b393a230e4b4bb9cf9097032a4b6, type: 3}
+  - {fileID: 6762968313635119186, guid: 08414679774aa194799079aa68503168, type: 3}
+  - {fileID: 6762968313635119186, guid: 5aa8a639ffc4d6a4ca67227fcee45e25, type: 3}
+  numberOfSpawnPointsPerRoom: 3
 --- !u!4 &345105022
 Transform:
   m_ObjectHideFlags: 0
