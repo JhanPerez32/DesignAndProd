@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
 
     float playerSpeed;
     float jump;
-    float gravity;
+    public float gravity;
     float groundDistance;
 
     [Header("Check Ground")]
@@ -46,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-           velocity.y = -2f;
+           velocity.y = 0;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -67,9 +67,13 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (!isWallRunning)
         {
-            velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+            }
         }
+        
     }
 }
