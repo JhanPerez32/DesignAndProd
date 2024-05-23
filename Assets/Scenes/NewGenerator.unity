@@ -304,8 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomStartCount: 2
-  minStarightRooms: 1
-  maxStarightRooms: 2
+  minStarightRooms: 3
+  maxStarightRooms: 5
   startingRoom: {fileID: 5935817951361338743, guid: 8f674d28786af5e4084839a522c2b99c,
     type: 3}
   turnRoom:
