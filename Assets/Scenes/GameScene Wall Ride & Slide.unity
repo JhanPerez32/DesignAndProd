@@ -858,7 +858,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108217641}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50db26016f9f2ed408f32adf2abd022c, type: 3}
   m_Name: 
@@ -919,9 +919,9 @@ MonoBehaviour:
   dampingFactor: 2.48
   wallJumpUpwardForce: 3
   CamAnim: {fileID: 1543208585}
-  slideSpeed: 10
+  slideSpeed: 2
   slideDuration: 1
-  crouchHeight: 0.5
+  crouchHeight: 0.05
   originalHeight: 0
 --- !u!1 &1154058294
 GameObject:
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10.47
   jumpHeight: 3
-  groundDist: 0.4
+  groundDist: 0.2
   mouseLookSensitivity: 100
 --- !u!114 &1154058297
 MonoBehaviour:
