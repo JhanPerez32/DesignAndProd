@@ -35,7 +35,7 @@ public class PlayerMovementWithWallRide : PlayerMove
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         CheckForWall();
         ApplyDamping();
@@ -114,7 +114,7 @@ public class PlayerMovementWithWallRide : PlayerMove
     {
         if (!isWallJumping)
         {
-            velocity.y = 0f;
+            velocity.y = 0;
 
             Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
