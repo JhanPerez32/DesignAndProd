@@ -23,14 +23,26 @@ namespace Pathways
             {
                 if (triggerObject != null)
                 {
-                    // Get the rotation of the trigger object
-                    Quaternion triggerRotation = triggerObject.rotation;
+                    // Check if the trigger object has a child
+                    if (triggerObject.childCount > 0)
+                    {
+                        // Get the first child of the trigger object
+                        Transform childTransform = triggerObject.GetChild(0);
 
-                    // Convert the rotation to a direction vector
-                    Vector3 newDirection = triggerRotation * Vector3.forward;
+                        // Get the position and rotation of the child object
+                        Vector3 childPosition = childTransform.position;
+                        Quaternion childRotation = childTransform.rotation;
 
-                    // Pass the direction to AddNewDirection method
-                    roomSpawn.AddNewDirection(newDirection);
+                        // Convert the rotation to a direction vector
+                        Vector3 newDirection = childRotation * Vector3.forward;
+
+                        // Pass the direction and position to AddNewDirection method
+                        roomSpawn.AddNewDirection(newDirection, childPosition);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Trigger object does not have any children.");
+                    }
                 }
                 else
                 {
