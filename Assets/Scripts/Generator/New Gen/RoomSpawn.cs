@@ -9,7 +9,7 @@ namespace Pathways
         [SerializeField] int roomStartCount = 10;
         [SerializeField] int minStarightRooms = 3;
         [SerializeField] int maxStarightRooms = 10;
-        [SerializeField] GameObject startingRoom;
+        [SerializeField] List<GameObject> straightRooms;
         [SerializeField] List<GameObject> turnRoom;
 
         private Vector3 currentRoomLoc = Vector3.zero;
@@ -20,16 +20,26 @@ namespace Pathways
 
         private void Start()
         {
+            StartSpawn();
+        }
+
+        public void StartSpawn()
+        {
             currentRooms = new List<GameObject>();
 
             Random.InitState(System.DateTime.Now.Millisecond);
 
-            for(int i = 0; i <roomStartCount; i++)
+            for (int i = 0; i < roomStartCount; i++)
             {
-                SpawnRoom(startingRoom.GetComponent<Paths>());
+                SpawnRoom(GetRandomRoom().GetComponent<Paths>());
             }
 
             SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
+        }
+
+        private GameObject GetRandomRoom()
+        {
+            return straightRooms[Random.Range(0, straightRooms.Count)];
         }
 
         public void SpawnRoom(Paths paths)
@@ -39,78 +49,49 @@ namespace Pathways
             prevRoom = GameObject.Instantiate(paths.gameObject, currentRoomLoc, newTileRotation);
             currentRooms.Add(prevRoom);
 
-            Renderer renderer = prevRoom.GetComponentInChildren<Renderer>();
-            if (renderer != null)
+            Transform spawnPoint = prevRoom.transform.Find("SpawnPoint");
+            if (spawnPoint != null)
             {
-                if (paths.type == PathTypes.STRAIGHT)
-                {
-                    currentRoomLoc += Vector3.Scale(renderer.bounds.size, currentRoomDir);
-                }    
+                currentRoomLoc = spawnPoint.position;
             }
             else
             {
-                Debug.LogWarning("No Renderer found in the child of the instantiated GameObject.");
+                return;
+                //Debug.LogWarning("No SpawnPoint found in the instantiated GameObject.");
             }
         }
 
-        public void DeletPrevRooms()
+        public void DeletePrevRooms()
         {
             while (currentRooms.Count != 1)
             {
                 GameObject room = currentRooms[0];
                 currentRooms.RemoveAt(0);
-                Destroy(room);
+                Destroy(room, 5f);
             }
         }
 
-        public void AddNewDirection(Vector3 direction)
-{
-    currentRoomDir = direction;
-    DeletPrevRooms();
+        public void AddNewDirection(Vector3 direction, Vector3 childPos)
+        {
+            // Update the current room direction
+            currentRoomDir = direction;
 
-    Vector3 roomPlacementScale;
+            // Delete previous rooms
+            DeletePrevRooms();
 
-    Renderer renderer = prevRoom.GetComponentInChildren<Renderer>();
-    MeshCollider[] meshColliders = startingRoom.GetComponentsInChildren<MeshCollider>();
+            // Calculate the new room location based on the direction and the position of the child object
+            currentRoomLoc = childPos + direction;
 
-    if (renderer == null || meshColliders.Length == 0)
-    {
-        Debug.LogWarning("Renderer or MeshColliders are missing.");
-        return;
-    }
+            // Determine the number of rooms to spawn in a straight path
+            int currentPathLength = Random.Range(minStarightRooms, maxStarightRooms);
+            for (int i = 0; i < currentPathLength; i++)
+            {
+                SpawnRoom(GetRandomRoom().GetComponent<Paths>());
+            }
 
-    // Get the bounds of the renderer
-    Bounds rendererBounds = renderer.bounds;
-
-    // Initialize a combined bounds structure
-    Bounds combinedMeshBounds = new Bounds(meshColliders[0].bounds.center, meshColliders[0].bounds.size);
-
-    // Combine the bounds of all mesh colliders
-    for (int i = 1; i < meshColliders.Length; i++)
-    {
-        combinedMeshBounds.Encapsulate(meshColliders[i].bounds);
-    }
-
-    if (prevRoom.GetComponent<Paths>().type == PathTypes.TSECTION)
-    {
-        roomPlacementScale = Vector3.Scale(rendererBounds.size / 2 + (Vector3.one * combinedMeshBounds.size.z / 2), currentRoomDir);
-    }
-    else
-    {
-        roomPlacementScale = Vector3.Scale((rendererBounds.size - (Vector3.one * -20)) + (Vector3.one * combinedMeshBounds.size.z / 2), currentRoomDir);
-    }                                                           //I don't know if this is Proper, but it managed to
-                                                                //snap on the continuation of the Path, Vector3.one * -20
-
-    currentRoomLoc += roomPlacementScale;
-
-    int currentPathLength = Random.Range(minStarightRooms, maxStarightRooms);
-    for (int i = 0; i < currentPathLength; i++)
-    {
-        SpawnRoom(startingRoom.GetComponent<Paths>());
-    }
-
-    SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
-}
+            // Spawn a turn room at the end of the straight path
+            SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
+        }
 
         private GameObject SelectRandomGOFromList(List<GameObject> list)
         {
