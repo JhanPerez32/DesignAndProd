@@ -54,5 +54,10 @@ namespace Pathways
                 Debug.LogWarning("Paths is not assigned in NewPath script.");
             }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            Destroy(gameObject);
+        }
     }
 }
