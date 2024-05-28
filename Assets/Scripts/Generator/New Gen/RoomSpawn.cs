@@ -57,7 +57,6 @@ namespace Pathways
             else
             {
                 return;
-                //Debug.LogWarning("No SpawnPoint found in the instantiated GameObject.");
             }
         }
 
@@ -73,23 +72,17 @@ namespace Pathways
 
         public void AddNewDirection(Vector3 direction, Vector3 childPos)
         {
-            // Update the current room direction
             currentRoomDir = direction;
-
-            // Delete previous rooms
             DeletePrevRooms();
 
             // Calculate the new room location based on the direction and the position of the child object
             currentRoomLoc = childPos + direction;
 
-            // Determine the number of rooms to spawn in a straight path
             int currentPathLength = Random.Range(minStarightRooms, maxStarightRooms);
             for (int i = 0; i < currentPathLength; i++)
             {
                 SpawnRoom(GetRandomRoom().GetComponent<Paths>());
             }
-
-            // Spawn a turn room at the end of the straight path
             SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
         }
 

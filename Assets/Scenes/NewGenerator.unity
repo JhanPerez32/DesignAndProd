@@ -307,13 +307,14 @@ MonoBehaviour:
   minStarightRooms: 1
   maxStarightRooms: 1
   straightRooms:
+  - {fileID: 309246938873531305, guid: bb1b37dd63ff0f142abc52f0a4f84574, type: 3}
   - {fileID: 5935817951361338743, guid: 430a9af1c8bc79646b41d17cf2fb9eba, type: 3}
   - {fileID: 5935817951361338743, guid: 8f674d28786af5e4084839a522c2b99c, type: 3}
   - {fileID: 5935817951361338743, guid: 2aecb199f361add4696eedf1966d69f5, type: 3}
   turnRoom:
-  - {fileID: 7552009918812421411, guid: a8debf41bf9ef2b4bbb80f17b95c97e1, type: 3}
   - {fileID: 822393494360844224, guid: 1a82d968ffc43264e8b7f444cf9040d4, type: 3}
   - {fileID: 4653244218916419566, guid: 036d6ccb4953d134495bb0f866051484, type: 3}
+  - {fileID: 7552009918812421411, guid: a8debf41bf9ef2b4bbb80f17b95c97e1, type: 3}
 --- !u!4 &540288652
 Transform:
   m_ObjectHideFlags: 0
@@ -571,12 +572,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1919354482}
+  playerSpeed: 0
+  jump: 0
   gravity: 0
+  groundDistance: 0
   groundCheck: {fileID: 807147152}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   velocity: {x: 0, y: 0, z: 0}
+  isGrounded: 0
   isWallRunning: 0
 --- !u!143 &1919354482
 CharacterController:
@@ -613,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 1919354480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 15}
+  m_LocalPosition: {x: 0, y: 1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
