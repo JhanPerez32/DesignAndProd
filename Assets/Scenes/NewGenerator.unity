@@ -303,10 +303,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d1346083962c94382d640ae6710592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomStartCount: 1
-  minStarightRooms: 1
-  maxStarightRooms: 1
+  roomStartCount: 5
+  minStarightRooms: 3
+  maxStarightRooms: 5
   straightRooms:
+  - {fileID: 3548889285177014787, guid: 47dbb7439dec8ec4e94e510e363702c2, type: 3}
   - {fileID: 5935817951361338743, guid: 430a9af1c8bc79646b41d17cf2fb9eba, type: 3}
   - {fileID: 5935817951361338743, guid: 8f674d28786af5e4084839a522c2b99c, type: 3}
   - {fileID: 5935817951361338743, guid: 2aecb199f361add4696eedf1966d69f5, type: 3}
@@ -571,12 +572,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1919354482}
+  playerSpeed: 0
+  jump: 0
   gravity: 0
+  groundDistance: 0
   groundCheck: {fileID: 807147152}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   velocity: {x: 0, y: 0, z: 0}
+  isGrounded: 0
   isWallRunning: 0
 --- !u!143 &1919354482
 CharacterController:
@@ -613,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 1919354480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 15}
+  m_LocalPosition: {x: 0, y: 1, z: 4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
