@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LoadingManager : MonoBehaviour
 {
     [SerializeField] private GameObject LoadingScreen;
+    [SerializeField] private TextMeshProUGUI progressText;
     [SerializeField] private Slider LoadingBarFill;
 
     public void LoadScene(string sceneID)
@@ -26,6 +28,7 @@ public class LoadingManager : MonoBehaviour
             float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
 
             LoadingBarFill.value = progressValue;
+            progressText.text = (progressValue * 100).ToString("0") + "%";
 
             yield return null;
         }
