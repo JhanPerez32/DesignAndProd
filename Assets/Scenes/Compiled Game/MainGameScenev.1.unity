@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8358796408521542643, guid: 61d6a2806a91e8843959539ade793f0d,
+        type: 3}
+      propertyPath: mouseLookSensitivity
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -428,6 +433,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1994848526564102607, guid: de821df975119a943ad7ef4855baeed6,
+        type: 3}
+      propertyPath: slideSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7147188570548884829, guid: de821df975119a943ad7ef4855baeed6,
         type: 3}
       propertyPath: m_Name
