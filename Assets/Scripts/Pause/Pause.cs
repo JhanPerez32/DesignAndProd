@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static bool gameIsPaused = false;
 
-    // Update is called once per frame
+    [SerializeField] private GameObject pauseMenuUI;
+
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();   //Be True after Esc
+            }
+        }
+    }
+
+    public void ResumeGame()   //Called upon Pressing Esc Key again
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    void PauseGame()    //Called upon Pressing Esc Key
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
     }
 }
