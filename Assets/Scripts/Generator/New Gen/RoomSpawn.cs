@@ -3,27 +3,26 @@ using UnityEngine;
 
 namespace Pathways
 {
-
     public class RoomSpawn : MonoBehaviour
     {
-        [SerializeField] int roomStartCount = 10;
-        [SerializeField] int minStarightRooms = 3;
-        [SerializeField] int maxStarightRooms = 10;
-        [SerializeField] List<GameObject> straightRooms;
-        [SerializeField] List<GameObject> turnRoom;
+        [SerializeField] protected int roomStartCount = 10;
+        [SerializeField] protected int minStarightRooms = 3;
+        [SerializeField] protected int maxStarightRooms = 10;
+        [SerializeField] protected List<GameObject> straightRooms;
+        [SerializeField] protected List<GameObject> turnRoom;
 
-        private Vector3 currentRoomLoc = Vector3.zero;
-        private Vector3 currentRoomDir = Vector3.forward;
-        private GameObject prevRoom;
+        protected Vector3 currentRoomLoc = Vector3.zero;
+        protected Vector3 currentRoomDir = Vector3.forward;
+        protected GameObject prevRoom;
 
-        private List<GameObject> currentRooms;
+        protected List<GameObject> currentRooms;
 
-        private void Start()
+        protected virtual void Start()
         {
             StartSpawn();
         }
 
-        public void StartSpawn()
+        public virtual void StartSpawn()
         {
             currentRooms = new List<GameObject>();
 
@@ -37,12 +36,12 @@ namespace Pathways
             SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
         }
 
-        private GameObject GetRandomRoom()
+        protected virtual GameObject GetRandomRoom()
         {
             return straightRooms[Random.Range(0, straightRooms.Count)];
         }
 
-        public void SpawnRoom(Paths paths)
+        public virtual void SpawnRoom(Paths paths)
         {
             Quaternion newTileRotation = paths.gameObject.transform.rotation * Quaternion.LookRotation(currentRoomDir, Vector3.up);
 
@@ -71,7 +70,7 @@ namespace Pathways
             }
         }
 
-        public void AddNewDirection(Vector3 direction, Vector3 childPos)
+        public virtual void AddNewDirection(Vector3 direction, Vector3 childPos)
         {
             currentRoomDir = direction;
 
@@ -89,7 +88,7 @@ namespace Pathways
             SpawnRoom(SelectRandomGOFromList(turnRoom).GetComponent<Paths>());
         }
 
-        private GameObject SelectRandomGOFromList(List<GameObject> list)
+        protected GameObject SelectRandomGOFromList(List<GameObject> list)
         {
             if (list.Count == 0)
             {
