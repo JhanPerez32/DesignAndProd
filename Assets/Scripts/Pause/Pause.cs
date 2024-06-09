@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     private static bool gameIsPaused = false;
 
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject settingsUI;
 
     void Update()
     {
@@ -28,6 +29,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);
+        settingsUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
