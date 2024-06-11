@@ -8,14 +8,13 @@ public class PlayerDeath : MonoBehaviour
     public CharacterController characterController;
     public GameObject gameOverScreen;
 
+    [SerializeField] LoadingManager loadingManager;
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(false);
-        }
+        loadingManager = FindObjectOfType<LoadingManager>();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -28,16 +27,24 @@ public class PlayerDeath : MonoBehaviour
 
     private void Die()
     {
-        Time.timeScale = 0;
-        ShowGameOverScreen();
-        Debug.Log("Player Died");
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        gameOverScreen.SetActive(true);
     }
 
-    private void ShowGameOverScreen()
+    public void RestartGame()
     {
-        if (gameOverScreen != null)
+        Time.timeScale = 1f;
+        characterController.enabled = false;
+
+        if (loadingManager != null)
         {
-            gameOverScreen.SetActive(true);
+            loadingManager.LoadScene(SceneManager.GetActiveScene().name); // Uses the LoadingManager to load the Current scene
+        }
+        else
+        {
+            Debug.LogError("LoadingManager not found in the scene.");
         }
     }
 }
