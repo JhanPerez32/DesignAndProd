@@ -43,26 +43,29 @@ public class PlayerMove : MonoBehaviour
 
     protected virtual void CharMove()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
+        if(controller)
         {
-           velocity.y = -2f;
-        }
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(playerSpeed * Time.deltaTime * move);
-        if (!isWallRunning)
-        {
-            velocity.y += gravity * Time.deltaTime;
+            Vector3 move = transform.right * x + transform.forward * z;
+            controller.Move(playerSpeed * Time.deltaTime * move);
+            if (!isWallRunning)
+            {
+                velocity.y += gravity * Time.deltaTime;
+            }
+            else
+            {
+                velocity.y -= (gravity / 2) * Time.deltaTime;
+            }
+            controller.Move(velocity * Time.deltaTime);
         }
-        else
-        {
-            velocity.y -= (gravity/2) * Time.deltaTime;
-        }
-        controller.Move(velocity * Time.deltaTime);
     }
 
     protected virtual void Jump()
