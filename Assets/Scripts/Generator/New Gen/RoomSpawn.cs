@@ -60,7 +60,7 @@ namespace Pathways
             }
         }
 
-        public void DeletePrevRooms()
+        public virtual void DeletePrevRooms()
         {
             while (currentRooms.Count != 1)
             {

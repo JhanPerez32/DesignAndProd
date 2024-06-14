@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6054209134104937687}
   - component: {fileID: 1164436358571136722}
   - component: {fileID: 3360151107669420062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2878969499351427805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3507053406023810894}
   - component: {fileID: 2729199910422065806}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 5205011215781046520}
   - component: {fileID: 1438677234634410173}
   - component: {fileID: 1994848526564102607}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FPS Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ MonoBehaviour:
   dampingFactor: 2.48
   wallJumpUpwardForce: 3
   CamAnim: {fileID: 2729199910422065806}
-  slideSpeed: 2
+  slideSpeed: 10
   slideDuration: 1
   crouchHeight: 0.05
   originalHeight: 0
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 8138216186806682392}
   - component: {fileID: 8633391839294236525}
   - component: {fileID: 3270044689292522598}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
