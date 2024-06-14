@@ -6,15 +6,22 @@ namespace Pathways
 {
     public class NewPath : MonoBehaviour
     {
-        Paths paths;
-        RoomSpawn roomSpawn;
+        [SerializeField]Paths paths;
+        [SerializeField] RoomSpawnRestructure roomSpawn;
+        private Paths path;
 
         public Transform triggerObject;
 
         private void Start()
         {
-            roomSpawn = GameObject.FindObjectOfType<RoomSpawn>();
-            paths = GameObject.FindObjectOfType<Paths>();
+            if (roomSpawn == null)
+            {
+                roomSpawn = GameObject.FindObjectOfType<RoomSpawnRestructure>();
+            }
+            if (path == null)
+            {
+                paths = GameObject.FindObjectOfType<Paths>();
+            }
         }
 
         void OnTriggerEnter(Collider other)

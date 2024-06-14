@@ -40,8 +40,8 @@ public class RoomSpawner : MonoBehaviour
 
             Collider[] colliders = Physics.OverlapBox(spawnPosition + bounds.center - roomToSpawn.transform.position, bounds.extents / 2, Quaternion.identity);
 
-            //If this was in == the rooms following room will not Spawn, need help on fixing this, don't know if this was the Problem or the Prefab Object
-            if (colliders.Length >= 0)
+            // Check if there are no overlapping colliders
+            if (colliders.Length == 0)
             {
                 GameObject spawnedRoom = Instantiate(roomToSpawn, spawnPosition, Quaternion.identity);
 
