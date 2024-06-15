@@ -43,7 +43,7 @@ public class PlayerMove : MonoBehaviour
 
     protected virtual void CharMove()
     {
-        if(controller)
+        if (controller && controller.enabled)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             if (isGrounded && velocity.y < 0)
