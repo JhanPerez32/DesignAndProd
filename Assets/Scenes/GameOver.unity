@@ -1771,9 +1771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1f144faf0fa1a4abe69d354209028a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 1108217643}
+  playerMoveScript: {fileID: 0}
   gameOverScreen: {fileID: 1536070437}
-  loadingManager: {fileID: 1154058298}
 --- !u!1 &1154058294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,6 +1785,7 @@ GameObject:
   - component: {fileID: 1154058296}
   - component: {fileID: 1154058297}
   - component: {fileID: 1154058298}
+  - component: {fileID: 1154058299}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1852,6 +1852,21 @@ MonoBehaviour:
   LoadingScreen: {fileID: 1239649930}
   progressText: {fileID: 1778860963}
   LoadingBarFill: {fileID: 202586775}
+--- !u!114 &1154058299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154058294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a351362cea5d049b5a9f0612d8cc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingManager: {fileID: 1154058298}
+  characterController: {fileID: 1108217643}
+  playerGameObject: {fileID: 1108217641}
 --- !u!1 &1199376509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,8 +1950,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108217646}
-        m_TargetAssemblyTypeName: PlayerDeath, Assembly-CSharp
+      - m_Target: {fileID: 1154058299}
+        m_TargetAssemblyTypeName: RestartManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -1944,7 +1959,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GameOver
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1199376512
