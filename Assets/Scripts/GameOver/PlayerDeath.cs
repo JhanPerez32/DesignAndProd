@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public PlayerMove playerMoveScript;
     public CharacterController characterController;
     public GameObject gameOverScreen;
 
@@ -15,7 +14,6 @@ public class PlayerDeath : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        playerMoveScript = GetComponent<PlayerMove>();
         loadingManager = FindObjectOfType<LoadingManager>();
     }
 
@@ -33,7 +31,6 @@ public class PlayerDeath : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
-        playerMoveScript.enabled = false; // Add this line to disable PlayerMove script
     }
 
     public void RestartGame()
