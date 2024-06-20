@@ -40,7 +40,7 @@ public class MouseSensitivity : MonoBehaviour
 
     public void AdjustSensitivity(float newMouseSpeed)
     {
-        mouseSensitivitySettings = newMouseSpeed * 10;
+        mouseSensitivitySettings = newMouseSpeed * 100;
         PlayerManager.Instance.mouseLookSensitivity = mouseSensitivitySettings;
         Save();
     }
