@@ -13,6 +13,9 @@ public class PlayerMovementWithWallRide : PlayerMove
     public float dampingFactor = 5f;
     public float wallJumpUpwardForce = 5f;
 
+    public UnityEngine.Events.UnityEvent EnterWallride;
+    public UnityEngine.Events.UnityEvent ExitWallride;
+
     private float horizontalInput;
     private float verticalInput;
     public Animator CamAnim;
@@ -64,6 +67,11 @@ public class PlayerMovementWithWallRide : PlayerMove
 
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
         {
+            if (!isWallRunning)
+            {
+                EnterWallride.Invoke(); // Invoke EnterWallride event when entering wallride state
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 WallJump();
@@ -84,6 +92,10 @@ public class PlayerMovementWithWallRide : PlayerMove
         }
         else
         {
+            if (isWallRunning)
+            {
+                ExitWallride.Invoke(); // Invoke ExitWallride event when exiting wallride state
+            }
             CamAnim.SetBool("WallrideL", false);
             CamAnim.SetBool("WallrideR", false);
             isWallRunning = false;

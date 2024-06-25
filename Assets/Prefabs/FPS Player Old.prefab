@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 6201780322257346573}
   - component: {fileID: 3155979243318602862}
   m_Layer: 3
-  m_Name: FPS Player
+  m_Name: FPS Player Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

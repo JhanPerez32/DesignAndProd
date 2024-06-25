@@ -121,17 +121,6 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        isRunning = (x != 0 || z != 0) && !isSliding;
-
-        if (isRunning && !wasRunning)
-        {
-            OnStartRun.Invoke();
-        }
-        else if (!isRunning && wasRunning)
-        {
-            OnEndRun.Invoke();
-        }
-
         if (!isSliding)
         {
             Vector3 move = transform.right * x + transform.forward * z;
@@ -184,16 +173,19 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         bool currentlyRunning = (x != 0 || z != 0) && !isSliding;
-
+        
         if (currentlyRunning && !isRunning)
         {
             isRunning = true;
             OnStartRun.Invoke();
+            Debug.Log("running");
         }
         else if (!currentlyRunning && isRunning)
         {
             isRunning = false;
             OnEndRun.Invoke();
+            Debug.Log("stopped running");
         }
+        
     }
 }
