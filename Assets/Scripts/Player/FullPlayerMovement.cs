@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
 {
@@ -12,6 +13,17 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
     private bool isSliding = false;
     private float slideTimer;
     private bool isCrouching = false;
+    private bool isRunning = false;
+
+    [Header("Movement Events")]
+    public UnityEvent OnStartSlide;
+    public UnityEvent OnEndSlide;
+    public UnityEvent OnStartCrouch;
+    public UnityEvent OnEndCrouch;
+    public UnityEvent OnJump;
+    public UnityEvent OnLand;
+    public UnityEvent OnStartRun;
+    public UnityEvent OnEndRun;
 
     protected override void Start()
     {
@@ -23,6 +35,7 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
     {
         base.Update();
         HandleCrouchSlide();
+        HandleRun();
     }
 
     void HandleCrouchSlide()
@@ -55,6 +68,8 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
         isCrouching = true;
         slideTimer = slideDuration;
         StartCoroutine(SmoothCrouch(crouchHeight));
+        OnStartSlide.Invoke();
+        OnStartCrouch.Invoke();
         // Maintain the current vertical velocity component to account for gravity
         Vector3 slideDirection = transform.forward * slideSpeed;
         velocity = new Vector3(slideDirection.x, velocity.y, slideDirection.z);
@@ -64,6 +79,7 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
     {
         isSliding = false;
         StartCoroutine(SmoothCrouch(originalHeight));
+        OnEndSlide.Invoke();
     }
 
     private IEnumerator SmoothCrouch(float targetHeight)
@@ -84,22 +100,40 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
         if (targetHeight == originalHeight)
         {
             isCrouching = false;
+            OnEndCrouch.Invoke();
         }
     }
 
     protected override void CharMove()
     {
+        bool wasGrounded = isGrounded;
+        bool wasRunning = isRunning;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = gravity/4;
+            velocity.y = gravity / 4;
+            if (!wasGrounded)
+            {
+                OnLand.Invoke();
+            }
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        isRunning = (x != 0 || z != 0) && !isSliding;
+
+        if (isRunning && !wasRunning)
+        {
+            OnStartRun.Invoke();
+        }
+        else if (!isRunning && wasRunning)
+        {
+            OnEndRun.Invoke();
+        }
+
         if (!isSliding)
         {
-
             Vector3 move = transform.right * x + transform.forward * z;
             controller.Move(playerSpeed * Time.deltaTime * move);
 
@@ -136,10 +170,30 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
     {
         if (!isWallRunning)
         {
-            if (Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && isSliding)
+            if ((Input.GetButtonDown("Jump") && isGrounded) || (Input.GetButtonDown("Jump") && isSliding))
             {
                 velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+                OnJump.Invoke();
             }
+        }
+    }
+
+    private void HandleRun()
+    {
+        // Update the isRunning state based on input
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        bool currentlyRunning = (x != 0 || z != 0) && !isSliding;
+
+        if (currentlyRunning && !isRunning)
+        {
+            isRunning = true;
+            OnStartRun.Invoke();
+        }
+        else if (!currentlyRunning && isRunning)
+        {
+            isRunning = false;
+            OnEndRun.Invoke();
         }
     }
 }
