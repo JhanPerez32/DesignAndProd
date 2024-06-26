@@ -115,6 +115,7 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
             velocity.y = gravity / 4;
             if (!wasGrounded)
             {
+                Debug.Log("Landed");
                 OnLand.Invoke();
             }
         }
@@ -185,6 +186,12 @@ public class PlayerMovementWithCrouchSlide : PlayerMovementWithWallRide
             isRunning = false;
             OnEndRun.Invoke();
             Debug.Log("stopped running");
+        }
+        
+        if(!isGrounded && isRunning && currentlyRunning)
+        {
+            isRunning = true;
+            OnStartRun.Invoke();
         }
         
     }

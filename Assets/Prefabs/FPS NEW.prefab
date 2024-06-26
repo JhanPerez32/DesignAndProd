@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 3384882866580266237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.675, z: 0}
+  m_LocalPosition: {x: 0, y: -0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,7 +189,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2.4427366
+  MinDistance: 1.2162756
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -312,7 +312,25 @@ MonoBehaviour:
   audioClips:
   - name: Run
     clip: {fileID: 8300000, guid: 0abca66a90670bf4db5fdddbcbd06e5e, type: 3}
+    volume: 1
     source: {fileID: 6976920533090061777}
+    randomizePitch: 0
+    minPitch: 0.9
+    maxPitch: 1.1
+  - name: Jump
+    clip: {fileID: 8300000, guid: bf61493e99d45184a9a14ceb8576cc43, type: 3}
+    volume: 1
+    source: {fileID: 7344122960886223146}
+    randomizePitch: 1
+    minPitch: 0.8
+    maxPitch: 0.95
+  - name: Land
+    clip: {fileID: 8300000, guid: 03d2cd4cb520f7947937dd7d1cd11e64, type: 3}
+    volume: 0.14
+    source: {fileID: 7344122960886223146}
+    randomizePitch: 1
+    minPitch: 0.67
+    maxPitch: 1.25
 --- !u!1 &3994407545504020226
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +524,7 @@ GameObject:
   - component: {fileID: 6606033326673974796}
   - component: {fileID: 7344122960886223146}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: General
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,7 +565,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.3743422
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -721,6 +739,12 @@ MonoBehaviour:
   wallJumpForce: 30
   dampingFactor: 2.48
   wallJumpUpwardForce: 3
+  EnterWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitWallride:
+    m_PersistentCalls:
+      m_Calls: []
   CamAnim: {fileID: 2046625493976268106}
   slideSpeed: 2
   slideDuration: 1
@@ -740,10 +764,46 @@ MonoBehaviour:
       m_Calls: []
   OnJump:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 202674203238787399}
+        m_TargetAssemblyTypeName: PlayerAudioManager, Assembly-CSharp
+        m_MethodName: StopAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Run
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 202674203238787399}
+        m_TargetAssemblyTypeName: PlayerAudioManager, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jump
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLand:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 202674203238787399}
+        m_TargetAssemblyTypeName: PlayerAudioManager, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Land
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStartRun:
     m_PersistentCalls:
       m_Calls:
