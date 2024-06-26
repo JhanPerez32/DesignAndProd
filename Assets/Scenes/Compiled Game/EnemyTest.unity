@@ -463,6 +463,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8356186822477466482, guid: 792db1022bd5dee4da53ccbee3024039,
+        type: 3}
+      propertyPath: OnLand.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8911122831389313757, guid: 792db1022bd5dee4da53ccbee3024039,
         type: 3}
       propertyPath: m_Name
@@ -1209,6 +1214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641181776925944278, guid: 5e5324fe59154024c971f3e6cab800df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6321225302200898545, guid: 5e5324fe59154024c971f3e6cab800df,
         type: 3}
