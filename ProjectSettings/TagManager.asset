@@ -8,6 +8,8 @@ TagManager:
   - RightSpawn
   - StraightSpawn
   - Obstacle
+  - Trigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
