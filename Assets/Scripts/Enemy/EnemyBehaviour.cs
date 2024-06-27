@@ -10,7 +10,7 @@ namespace Pathways
     {
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private GameObject player;
-        [SerializeField]float distanceToPlayer;
+        [SerializeField] public float distanceToPlayer;
         private RoomSpawnRestructure roomSpawn;
 
         // Adjust these parameters to control the speed behavior

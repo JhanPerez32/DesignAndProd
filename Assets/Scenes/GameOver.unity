@@ -1771,7 +1771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1f144faf0fa1a4abe69d354209028a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveScript: {fileID: 0}
+  playerMoveScript: {fileID: 1108217645}
   gameOverScreen: {fileID: 1536070437}
 --- !u!1 &1154058294
 GameObject:
