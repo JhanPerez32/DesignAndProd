@@ -8,12 +8,14 @@ public class PlayerAudioManager : MonoBehaviour
     {
         public string name;
         public AudioClip clip;
-        public float volume = 1.0f; // Default volume to 1.0
-        [HideInInspector] public AudioSource source; // Hide in Inspector to avoid manual assignment
+        [Range(0.0f, 1.0f)] public float volume = 1.0f; // Default volume to 1.0, with a slider from 0.0 to 1.0
+        public AudioSource source;
 
         public bool randomizePitch = false; // Checkbox to randomize pitch
         [Range(0.1f, 3.0f)] public float minPitch = 0.9f; // Minimum pitch range
         [Range(0.1f, 3.0f)] public float maxPitch = 1.1f; // Maximum pitch range
+
+        [Range(-1.0f, 1.0f)] public float panStereo = 0.0f; // Stereo pan range from -1 (left) to 1 (right)
     }
 
     [SerializeField] private List<Audio> audioClips;
@@ -28,6 +30,7 @@ public class PlayerAudioManager : MonoBehaviour
                 audio.source = gameObject.AddComponent<AudioSource>();
                 audio.source.clip = audio.clip;
                 audio.source.volume = audio.volume;
+                audio.source.panStereo = audio.panStereo; // Set the stereo pan
             }
         }
     }
@@ -44,6 +47,7 @@ public class PlayerAudioManager : MonoBehaviour
                 clipToPlay.source.clip = clipToPlay.clip;
             }
             clipToPlay.source.volume = clipToPlay.volume; // Set the volume
+            clipToPlay.source.panStereo = clipToPlay.panStereo; // Set the stereo pan
 
             // Randomize pitch if the checkbox is checked
             if (clipToPlay.randomizePitch)
@@ -90,6 +94,25 @@ public class PlayerAudioManager : MonoBehaviour
             if (clipToAdjust.source.isPlaying)
             {
                 clipToAdjust.source.volume = volume;
+            }
+        }
+        else
+        {
+            Debug.LogError($"Audio clip with name '{clipName}' not found.");
+        }
+    }
+
+    // Adjust the stereo pan of an audio clip by name
+    public void SetPanStereo(string clipName, float panStereo)
+    {
+        // Find the audio clip with the specified name
+        Audio clipToAdjust = audioClips.Find(audio => audio.name == clipName);
+        if (clipToAdjust != null)
+        {
+            clipToAdjust.panStereo = panStereo;
+            if (clipToAdjust.source.isPlaying)
+            {
+                clipToAdjust.source.panStereo = panStereo;
             }
         }
         else

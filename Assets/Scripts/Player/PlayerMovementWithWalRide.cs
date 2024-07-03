@@ -15,6 +15,10 @@ public class PlayerMovementWithWallRide : PlayerMove
 
     public UnityEngine.Events.UnityEvent EnterWallride;
     public UnityEngine.Events.UnityEvent ExitWallride;
+    public UnityEngine.Events.UnityEvent EnterLeftWallride;  // New event for entering left wall ride
+    public UnityEngine.Events.UnityEvent EnterRightWallride; // New event for entering right wall ride
+    public UnityEngine.Events.UnityEvent ExitLeftWallride;   // New event for exiting left wall ride
+    public UnityEngine.Events.UnityEvent ExitRightWallride;  // New event for exiting right wall ride
 
     private float horizontalInput;
     private float verticalInput;
@@ -24,6 +28,8 @@ public class PlayerMovementWithWallRide : PlayerMove
     private bool wallRight;
     private bool wallLeft;
     private bool isWallJumping;
+    private bool wasWallRunningLeft;  // Track previous wall running state for left wall
+    private bool wasWallRunningRight; // Track previous wall running state for right wall
 
     protected override void Update()
     {
@@ -72,6 +78,16 @@ public class PlayerMovementWithWallRide : PlayerMove
                 EnterWallride.Invoke(); // Invoke EnterWallride event when entering wallride state
             }
 
+            if (wallLeft && !wasWallRunningLeft)
+            {
+                EnterLeftWallride.Invoke(); // Invoke EnterLeftWallride event when entering left wall ride
+            }
+
+            if (wallRight && !wasWallRunningRight)
+            {
+                EnterRightWallride.Invoke(); // Invoke EnterRightWallride event when entering right wall ride
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 WallJump();
@@ -84,10 +100,14 @@ public class PlayerMovementWithWallRide : PlayerMove
             if (wallLeft && !wallRight)
             {
                 CamAnim.SetBool("WallrideR", true);
+                wasWallRunningLeft = true;
+                wasWallRunningRight = false;
             }
             else
             {
                 CamAnim.SetBool("WallrideL", true);
+                wasWallRunningLeft = false;
+                wasWallRunningRight = true;
             }
         }
         else
@@ -96,6 +116,19 @@ public class PlayerMovementWithWallRide : PlayerMove
             {
                 ExitWallride.Invoke(); // Invoke ExitWallride event when exiting wallride state
             }
+
+            if (wasWallRunningLeft)
+            {
+                ExitLeftWallride.Invoke(); // Invoke ExitLeftWallride event when exiting left wall ride
+                wasWallRunningLeft = false;
+            }
+
+            if (wasWallRunningRight)
+            {
+                ExitRightWallride.Invoke(); // Invoke ExitRightWallride event when exiting right wall ride
+                wasWallRunningRight = false;
+            }
+
             CamAnim.SetBool("WallrideL", false);
             CamAnim.SetBool("WallrideR", false);
             isWallRunning = false;
