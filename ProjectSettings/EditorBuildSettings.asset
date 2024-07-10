@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/M_Sens_GameTest.unity
     guid: 5f09404bf746905418aba196383a9d37
+  - enabled: 1
+    path: Assets/Scenes/Compiled Game/TimeSurvived.unity
+    guid: 4fc417372357ada49b0f501755e23c31
   m_configObjects: {}
