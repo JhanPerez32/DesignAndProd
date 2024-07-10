@@ -32,7 +32,15 @@ public class PlayerDeath : MonoBehaviour
         if (enemyController.distanceToPlayer < distanceThreshold)
         {
             Die();
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             Debug.Log("Enemy Hit");
+=======
+            Debug.Log("Player Hit");
+>>>>>>> Stashed changes
+=======
+            Debug.Log("Player Hit");
+>>>>>>> Stashed changes
         }
     }
 
