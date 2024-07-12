@@ -7,7 +7,6 @@ public class SurviveLength : MonoBehaviour
 {
     [SerializeField] TextSetter textSetter;
 
-    private TMP_Text timerText;
     private bool isRunning;
     private float currentTime;
     private float bestTime;
@@ -17,14 +16,14 @@ public class SurviveLength : MonoBehaviour
         bestTime = PlayerPrefs.GetFloat("BestTime", 0f);
         currentTime = 0f;
 
-        if (textSetter != null && textSetter.uiText != null)
+        if (textSetter != null)
         {
-            timerText = textSetter.uiText;
+            textSetter.SetTexts(); // Initialize texts if needed
             UpdateTimerText();
         }
         else
         {
-            Debug.LogWarning("TextSetter or TMP_Text component is not assigned.");
+            Debug.LogWarning("TextSetter is not assigned.");
         }
 
         isRunning = true;
@@ -51,6 +50,7 @@ public class SurviveLength : MonoBehaviour
         }
     }
 
+    //For Erasing the Saved Record
     public void DeleteSavedTimer()
     {
         PlayerPrefs.DeleteKey("BestTime");
@@ -71,10 +71,8 @@ public class SurviveLength : MonoBehaviour
         float bestMilliseconds = (bestTime * 1000) % 1000;
         string bestTimerText = string.Format("{0:00}:{1:00}:{2:000}", bestMinutes, bestSeconds, bestMilliseconds);
 
-        // Update the timer text with both current and best time
-        timerText.text = string.Format("Current Time: {0}\nBest Time: {1}", currentTimerText, bestTimerText);
-
         // Update the text using TextSetter
-        textSetter.SetText(timerText.text);
+        string timerText = string.Format("Current Time: {0}\nBest Time: {1}", currentTimerText, bestTimerText);
+        textSetter.SetText(0, timerText);
     }
 }
