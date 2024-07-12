@@ -7,7 +7,7 @@ namespace Pathways
     public class RoomSpawnRestructure : RoomSpawn
     {
         [SerializeField] private NavMeshSurface navMeshSurface;
-        [SerializeField] private int totalRoomsSpawned = 0;
+        public int totalRoomsSpawned = 0;
 
         // New variables to limit consecutive turns
         [SerializeField] private int maxConsecutiveTurns = 2; // Adjust as needed
