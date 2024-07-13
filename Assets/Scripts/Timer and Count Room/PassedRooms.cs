@@ -44,14 +44,4 @@ public class PassedRooms : MonoBehaviour
 
         textSetter.SetText(1, combinedText);
     }
-
-
-    //For Erasing the Saved Record
-    public void ClearBestRecord()
-    {
-        bestRecord = 0;
-        PlayerPrefs.SetInt("BestRoomCount", bestRecord);
-        UpdateRoomCountText();
-    }
-
 }
