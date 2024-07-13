@@ -50,15 +50,6 @@ public class SurviveLength : MonoBehaviour
         }
     }
 
-    //For Erasing the Saved Record
-    public void DeleteSavedTimer()
-    {
-        PlayerPrefs.DeleteKey("BestTime");
-        PlayerPrefs.Save();
-
-        bestTime = 0f;
-    }
-
     void UpdateTimerText()
     {
         float currentMinutes = Mathf.FloorToInt(currentTime / 60);
