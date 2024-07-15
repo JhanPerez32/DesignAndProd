@@ -3130,7 +3130,7 @@ PrefabInstance:
     - target: {fileID: 928181076482497851, guid: 792db1022bd5dee4da53ccbee3024039,
         type: 3}
       propertyPath: Hit.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 928181076482497851, guid: 792db1022bd5dee4da53ccbee3024039,
         type: 3}
@@ -5374,7 +5374,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 90
   DopplerLevel: 1
   MinDistance: 25
   MaxDistance: 50
@@ -7768,8 +7768,8 @@ MonoBehaviour:
   agent: {fileID: 6321225301714730742}
   player: {fileID: 13705431}
   distanceToPlayer: 100
-  baseSpeed: 15
-  maxSpeed: 15
+  baseSpeed: 20
+  maxSpeed: 25
   distanceThreshold: 20
 --- !u!1 &1641181775399765201
 GameObject:
