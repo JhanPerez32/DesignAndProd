@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerDeath : MonoBehaviour
 {
     [SerializeField] EnemyController enemyController;
-    [SerializeField] float distanceThreshold;
+    public float distanceThreshold;
     [SerializeField] PlayerMove playerMoveScript;
 
     public UnityEvent Hit;
