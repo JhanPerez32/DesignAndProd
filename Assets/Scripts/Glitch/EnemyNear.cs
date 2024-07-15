@@ -32,6 +32,11 @@ public class EnemyNear : MonoBehaviour
 
     private void Update()
     {
+        GlitchEffect();
+    }
+
+    void GlitchEffect()
+    {
         float distanceToPlayer = enemyController.distanceToPlayer;
 
         if (distanceToPlayer < distanceToStartGlitch)
