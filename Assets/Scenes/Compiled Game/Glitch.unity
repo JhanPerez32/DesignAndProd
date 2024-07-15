@@ -883,6 +883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 696157701}
   - component: {fileID: 696157700}
+  - component: {fileID: 696157702}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -906,7 +907,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 56a0eb7ca0c1d8143bd6eba71feaf381, type: 2}
 --- !u!4 &696157701
 Transform:
   m_ObjectHideFlags: 0
@@ -922,6 +923,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696157702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696157699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2aa5a92a04af744b1769037557ccc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 696157700}
+  glitchIntensity: 0
 --- !u!1001 &849946491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3647,12 +3662,12 @@ GameObject:
   - component: {fileID: 1512992201900888366}
   - component: {fileID: 6321225301714730742}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Enemy Glitch
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1734945645880216930
 CapsuleCollider:
   m_ObjectHideFlags: 0
