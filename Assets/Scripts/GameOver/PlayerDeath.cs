@@ -12,8 +12,14 @@ public class PlayerDeath : MonoBehaviour
 
     public UnityEvent Hit;
 
+    bool hasKilled;
+    public static bool isGameOver;
+
     void Start()
     {
+        hasKilled = false;
+        isGameOver = false;
+
         playerMoveScript = GetComponent<PlayerMove>();
 
         if (!enemyController)
@@ -24,7 +30,10 @@ public class PlayerDeath : MonoBehaviour
 
     private void Update()
     {
-        EnemyHit();
+        if (!hasKilled)
+        {
+            EnemyHit();
+        }
     }
 
     void EnemyHit()
@@ -38,7 +47,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Obstacle"))
+        if (!hasKilled && hit.gameObject.CompareTag("Obstacle"))
         {
             Die();
         }
@@ -49,6 +58,8 @@ public class PlayerDeath : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        hasKilled = true;
+        isGameOver = true;
         playerMoveScript.enabled = false; //Disable the PlayerMove script
         Debug.Log("Player died, time scale set to 0");
         Hit.Invoke();
