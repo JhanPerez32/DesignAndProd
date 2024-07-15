@@ -11,6 +11,11 @@ public class EnemyNear : MonoBehaviour
     [Range (5f, 25f)]
     [SerializeField] float distanceToStartGlitch;
 
+    [Range (0f, 1f)]
+    [SerializeField] float maxScanLineIntensity;
+    [Range(0f, 1f)]
+    [SerializeField] float maxColorDriftIntensity;
+
 
     private void Start()
     {
@@ -33,15 +38,17 @@ public class EnemyNear : MonoBehaviour
         {
             float normalizedDistance = Mathf.Clamp01(distanceToPlayer / distanceToStartGlitch);
 
-            float intensity = 1f - normalizedDistance;
+            float scanLineIntensity = maxScanLineIntensity - normalizedDistance;
+            float colorDriftIntensity = maxColorDriftIntensity - normalizedDistance * 0.5f; // Adjust this factor as needed
 
-            glitchController.glitchIntensity = intensity;
+            glitchController.scanLineJitterIntensity = scanLineIntensity;
+            glitchController.colorDriftIntensity = colorDriftIntensity;
 
-            Debug.Log("Increase Glitch: " + intensity);
         }
         else
         {
-            glitchController.glitchIntensity = 0f;
+            glitchController.scanLineJitterIntensity = 0f;
+            glitchController.colorDriftIntensity = 0f;
         }
     }
 }

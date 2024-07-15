@@ -177,6 +177,8 @@ MonoBehaviour:
   enemyController: {fileID: 1512992201900888366}
   glitchController: {fileID: 696157702}
   distanceToStartGlitch: 25
+  maxScanLineIntensity: 0.5
+  maxColorDriftIntensity: 0.75
 --- !u!1 &33872672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1734945645880216930
 CapsuleCollider:
   m_ObjectHideFlags: 0
