@@ -561,6 +561,11 @@ PrefabInstance:
       propertyPath: textEntries.Array.data[1].uiText
       value: 
       objectReference: {fileID: 1207330503}
+    - target: {fileID: 1546115398420098735, guid: 61d6a2806a91e8843959539ade793f0d,
+        type: 3}
+      propertyPath: gravityScale
+      value: -11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2471676903022674472, guid: 61d6a2806a91e8843959539ade793f0d,
         type: 3}
       propertyPath: playerGameObject
@@ -748,7 +753,7 @@ GameObject:
   - component: {fileID: 1652833385}
   - component: {fileID: 1652833384}
   - component: {fileID: 1652833383}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1331,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8307388770810962979}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f76529b2133bf854e8c13bfaa3f34b40, type: 3}
   m_Name: 
@@ -1467,6 +1472,72 @@ PrefabInstance:
       propertyPath: navMeshSurface
       value: 
       objectReference: {fileID: 935524321}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: turnRoom.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: mainRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: eventRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: turnRoom.Array.data[0]
+      value: 
+      objectReference: {fileID: 822393494360844224, guid: 2cf9371e890244942a8e19cd51507057,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: turnRoom.Array.data[1]
+      value: 
+      objectReference: {fileID: 4653244218916419566, guid: 5129603ba19ba464ea0aa3594041c190,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: straightRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: straightRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 3426179458622524908, guid: ca6371797f03f1e4ba500155c25f4c76,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: straightRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 5967932588209581833, guid: 97605d2b3f9093147866d25af8343203,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: mainRooms.Array.data[0].pathPrefab
+      value: 
+      objectReference: {fileID: 3426179458622524908, guid: ca6371797f03f1e4ba500155c25f4c76,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: eventRooms.Array.data[0].roomPrefab
+      value: 
+      objectReference: {fileID: 3426179458622524908, guid: ca6371797f03f1e4ba500155c25f4c76,
+        type: 3}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: mainRooms.Array.data[0].spawnChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
+        type: 3}
+      propertyPath: eventRooms.Array.data[0].roomEventNumber
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1545,6 +1616,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 13705431}
+    - target: {fileID: 8953714515186334133, guid: 5a6540b141b58c842aec5fbbcf5d076b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
