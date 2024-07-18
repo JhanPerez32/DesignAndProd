@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.06
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: Hit.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 129888119}
+    - target: {fileID: 1711249683201414112, guid: 792db1022bd5dee4da53ccbee3024039,
+        type: 3}
+      propertyPath: field of view
+      value: 71
+      objectReference: {fileID: 0}
     - target: {fileID: 7452669755939682314, guid: 792db1022bd5dee4da53ccbee3024039,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1757,13 +1762,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+      objectReference: {fileID: 11400000, guid: 20b84d914a919a74da272f3a674ac495,
         type: 2}
+    - target: {fileID: 1573339452541403832, guid: 5ff5c6e187b86b4459f16b13f35e0170,
+        type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1573339452541403832, guid: 5ff5c6e187b86b4459f16b13f35e0170,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 245881033664128135, guid: 20b84d914a919a74da272f3a674ac495,
+        type: 2}
     - target: {fileID: 1573339452541403832, guid: 5ff5c6e187b86b4459f16b13f35e0170,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -1904,13 +1915,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+      objectReference: {fileID: 11400000, guid: 20b84d914a919a74da272f3a674ac495,
         type: 2}
     - target: {fileID: 4602370572528122778, guid: 5ff5c6e187b86b4459f16b13f35e0170,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 245881033664128135, guid: 20b84d914a919a74da272f3a674ac495,
+        type: 2}
     - target: {fileID: 4602370572528122778, guid: 5ff5c6e187b86b4459f16b13f35e0170,
         type: 3}
       propertyPath: m_hasFontAssetChanged
