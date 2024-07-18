@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8307388770810962979}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f76529b2133bf854e8c13bfaa3f34b40, type: 3}
   m_Name: 
@@ -4560,7 +4560,7 @@ PrefabInstance:
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
       propertyPath: turnRoom.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
@@ -4576,7 +4576,7 @@ PrefabInstance:
         type: 3}
       propertyPath: turnRoom.Array.data[0]
       value: 
-      objectReference: {fileID: 3382838910969941612, guid: 31af12bcbfe60ec4781519e00567b7bc,
+      objectReference: {fileID: 325110411469078330, guid: 93402271bb598e34cbbc6311c869eb79,
         type: 3}
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
@@ -4587,7 +4587,7 @@ PrefabInstance:
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
       propertyPath: straightRooms.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
@@ -4640,7 +4640,7 @@ PrefabInstance:
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
       propertyPath: mainRooms.Array.data[0].spawnChance
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7309706300564617488, guid: 246601aa4b7122e44b78d7e0c6b929de,
         type: 3}
@@ -4743,7 +4743,7 @@ PrefabInstance:
     - target: {fileID: 8953714515186334133, guid: 5a6540b141b58c842aec5fbbcf5d076b,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8953714515186334133, guid: 5a6540b141b58c842aec5fbbcf5d076b,
         type: 3}
