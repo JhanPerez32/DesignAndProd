@@ -7,7 +7,7 @@ namespace Pathways
     public class RoomSpawnRestructure : RoomSpawn
     {
         [SerializeField] private NavMeshSurface navMeshSurface;
-        [SerializeField] private int totalRoomsSpawned = 0;
+        public int totalRoomsSpawned = 0;
 
         // New variables to limit consecutive turns
         [SerializeField] private int maxConsecutiveTurns = 2; // Adjust as needed
@@ -81,6 +81,24 @@ namespace Pathways
             RebakeNavMesh();
         }
 
+        public override void SpawnRoom(Paths paths)
+        {
+            Quaternion newTileRotation = paths.gameObject.transform.rotation * Quaternion.LookRotation(currentRoomDir, Vector3.up);
+
+            prevRoom = GameObject.Instantiate(paths.gameObject, currentRoomLoc, newTileRotation);
+            prevRoom.GetComponent<EnemyRoomDelete>().RoomSpawnRestructure = this;
+            currentRooms.Add(prevRoom);
+            Transform spawnPoint = prevRoom.transform.Find("SpawnPoint");
+            if (spawnPoint != null)
+            {
+                currentRoomLoc = spawnPoint.position;
+            }
+            else
+            {
+                return;
+                //Debug.LogWarning("No SpawnPoint found in the instantiated GameObject.");
+            }
+        }
         private GameObject PickEventRoom()
         {
             foreach (EventRoom eventRoom in eventRooms)
@@ -142,11 +160,21 @@ namespace Pathways
         {
             currentRoomDir = direction;
 
-            DeletePrevRooms();
+            //DeletePrevRooms();
 
             currentRoomLoc = childPos + direction;
 
             SpawnPath();
+        }
+        public void DeletePrevRooms(GameObject RoomDelete)
+        {
+            for (int i = 0; i < currentRooms.Count; i++)
+            {
+                if (currentRooms[i].gameObject == RoomDelete)
+                {
+                    currentRooms.RemoveAt(i);
+                }
+            }
         }
 
         private void RebakeNavMesh()

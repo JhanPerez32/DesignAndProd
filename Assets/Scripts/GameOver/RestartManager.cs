@@ -1,6 +1,8 @@
+using Pathways;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class RestartManager : MonoBehaviour
@@ -24,11 +26,7 @@ public class RestartManager : MonoBehaviour
 
         if (loadingManager != null)
         {
-            loadingManager.LoadScene(SceneManager.GetActiveScene().name); // Uses the LoadingManager to load the Current scene
-        }
-        else
-        {
-            Debug.LogError("LoadingManager not found in the scene.");
+            loadingManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

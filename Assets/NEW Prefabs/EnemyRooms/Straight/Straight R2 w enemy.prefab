@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7823571398663450375}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 1187383350347690501}
   - component: {fileID: 1088583650662959325}
   - component: {fileID: -1398517662204378503}
+  - component: {fileID: 2890835959719338124}
   m_Layer: 10
   m_Name: Straight R2 w enemy
   m_TagString: Untagged
@@ -462,9 +463,21 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 10, y: 10, z: 95}
   m_Center: {x: 0, y: 5, z: 50}
+--- !u!114 &2890835959719338124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935817951361338743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a3b3ed06834ad4c920ebb5acbb0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

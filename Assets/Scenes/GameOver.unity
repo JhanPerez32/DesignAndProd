@@ -1758,6 +1758,24 @@ MonoBehaviour:
   wallJumpForce: 30
   dampingFactor: 2.48
   wallJumpUpwardForce: 5
+  EnterWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  EnterLeftWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  EnterRightWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitLeftWallride:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitRightWallride:
+    m_PersistentCalls:
+      m_Calls: []
   CamAnim: {fileID: 1543208585}
 --- !u!114 &1108217646
 MonoBehaviour:
@@ -1771,8 +1789,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1f144faf0fa1a4abe69d354209028a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveScript: {fileID: 0}
-  gameOverScreen: {fileID: 1536070437}
+  enemyController: {fileID: 0}
+  distanceThreshold: 0
+  playerMoveScript: {fileID: 1108217645}
+  characterController: {fileID: 1108217643}
+  Hit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1536070437}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1154058294
 GameObject:
   m_ObjectHideFlags: 0

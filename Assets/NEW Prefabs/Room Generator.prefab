@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6717431176288511381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898739633901076653}
+  - component: {fileID: 7309706300564617488}
+  m_Layer: 0
+  m_Name: Room Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898739633901076653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717431176288511381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7309706300564617488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717431176288511381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e2cd8a43b60b14bbae55f1db235e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomStartCount: 10
+  minStarightRooms: 3
+  maxStarightRooms: 10
+  straightRooms:
+  - {fileID: 3792624783311240712, guid: f9a05e81d95c5c244856fdd46435ca34, type: 3}
+  turnRoom:
+  - {fileID: 822393494360844224, guid: 2cf9371e890244942a8e19cd51507057, type: 3}
+  - {fileID: 4653244218916419566, guid: 5129603ba19ba464ea0aa3594041c190, type: 3}
+  navMeshSurface: {fileID: 0}
+  totalRoomsSpawned: 0
+  maxConsecutiveTurns: 2
+  consecutiveTurnCount: 0
+  mainRooms:
+  - pathPrefab: {fileID: 3792624783311240712, guid: f9a05e81d95c5c244856fdd46435ca34,
+      type: 3}
+    pathType: 0
+    spawnChance: 0.105
+  eventRooms:
+  - roomPrefab: {fileID: 3792624783311240712, guid: f9a05e81d95c5c244856fdd46435ca34,
+      type: 3}
+    roomEventNumber: 8
